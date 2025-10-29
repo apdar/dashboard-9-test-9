@@ -1,0 +1,45 @@
+<!-- Comparison Component -->
+<section id="comparison" class="comparison-section">
+    <h2>Comparison</h2>
+    <div class="comparison-container">
+        <select id="comparison-field" class="comparison-select">
+            <option value="">Select field to compare</option>
+        </select>
+        <div id="comparison-result"></div>
+    </div>
+</section>
+
+<script>
+function setupComparison(data, fields) {
+    const select = document.getElementById('comparison-field');
+    fields.forEach(field => {
+        const option = document.createElement('option');
+        option.value = field;
+        option.textContent = field;
+        select.appendChild(option);
+    });
+    
+    select.addEventListener('change', (e) => {
+        const field = e.target.value;
+        if (field) {
+            displayComparison(data, field);
+        }
+    });
+}
+
+function displayComparison(data, field) {
+    const result = document.getElementById('comparison-result');
+    const values = data.map(item => item[field]).filter(v => v !== undefined);
+    const max = Math.max(...values);
+    const min = Math.min(...values);
+    const avg = values.reduce((a, b) => a + b, 0) / values.length;
+    
+    result.innerHTML = `
+        <div class="comparison-stats">
+            <div>Max: ${max}</div>
+            <div>Min: ${min}</div>
+            <div>Average: ${avg.toFixed(2)}</div>
+        </div>
+    `;
+}
+</script>
