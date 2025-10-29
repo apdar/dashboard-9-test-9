@@ -1,0 +1,39 @@
+<!-- Table Component -->
+<div class="table-component">
+    <table id="data-table">
+        <thead>
+            <tr id="table-header"></tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+</div>
+
+<script>
+function createTable(data, columns) {
+    const table = document.getElementById('data-table');
+    const header = document.getElementById('table-header');
+    const body = document.getElementById('table-body');
+    
+    // Clear existing content
+    header.innerHTML = '';
+    body.innerHTML = '';
+    
+    // Create header
+    columns.forEach(col => {
+        const th = document.createElement('th');
+        th.textContent = col;
+        header.appendChild(th);
+    });
+    
+    // Create rows
+    data.forEach(row => {
+        const tr = document.createElement('tr');
+        columns.forEach(col => {
+            const td = document.createElement('td');
+            td.textContent = row[col] || '';
+            tr.appendChild(td);
+        });
+        body.appendChild(tr);
+    });
+}
+</script>
