@@ -1,0 +1,24 @@
+<!-- Overview Component -->
+<section id="overview" class="overview-section">
+    <h2>Overview</h2>
+    <div class="overview-grid">
+        <!-- Overview cards will be inserted here -->
+    </div>
+</section>
+
+<script>
+function createOverview(stats) {
+    const grid = document.querySelector('.overview-grid');
+    grid.innerHTML = '';
+    
+    stats.forEach(stat => {
+        const card = document.createElement('div');
+        card.className = 'overview-card';
+        card.innerHTML = `
+            <h3>${stat.label}</h3>
+            <div class="stat-value">${stat.value}</div>
+        `;
+        grid.appendChild(card);
+    });
+}
+</script>
