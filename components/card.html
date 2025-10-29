@@ -1,0 +1,21 @@
+<!-- Card Component -->
+<div class="card-component">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"></h3>
+        </div>
+        <div class="card-body">
+            <div class="card-value"></div>
+            <div class="card-description"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function createCard(title, value, description) {
+    const card = document.querySelector('.card');
+    card.querySelector('.card-title').textContent = title;
+    card.querySelector('.card-value').textContent = value;
+    card.querySelector('.card-description').textContent = description;
+}
+</script>
